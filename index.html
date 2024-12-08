@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+        
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+    <script src="./map.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <h2>Contactez-nous</h2>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="input-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phone">Téléphone</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="input-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+
+            <div class="contact-options">
+                <a href="https://api.whatsapp.com/send?phone=25779909070"><button type="button" class="contact-btn" onclick="contactWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button></a>
+
+                <a type="button" class="contact-btn" href="./sms.html">
+                    <i class="fas fa-sms"></i>
+                    SMS
+                </a>
+                <a href="stripe.html">Stripe</a>
+                <!-- <a href="meteo.html">Météo</a> -->
+                <h1><img src="default.jpg" alt="imgURL" id="imgURL"></h1>
+                <p id="temp"></p>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitt">Envoyer</button>
+           
+        </form>
+
+        <div class="success-message" id="successMessage">
+            Message envoyé avec succès !
+        </div>
+        <script src="./contact.js" type="module"></script>
+         
+    </div>
+    
+</body>

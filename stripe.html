@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Paiement avec Carte biometrique </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="./map.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Mon Site Web</h1>
+            
+            <h1><img src="default.jpg" alt="imgURL" id="imgURL"></h1>
+            <p id="temp"></p>
+        </div>
+    </header>
+    <main>
+        <div class="payment-container">
+            <h1>Paiement Sécurisé avec Stripe</h1>
+            <p>Effectuez un paiement rapide et sécurisé en quelques clics.</p>
+            <button id="checkout">Procéder au paiement</button>
+        </div>
+    </main>
+    <script>
+        var stripe = Stripe('pk_test_51QSHLVGbz1lquIld7KUn69qZ1s2OyUd0QegymwfWfUaOSJdR5fUJ05Pcu3qMt7wbgXfvfqOOxTXH4k8kdagL5SSX00WxXns6yQ');
+
+        document.getElementById("checkout").addEventListener("click", function () {
+            stripe.redirectToCheckout({
+                lineItems: [
+                    {
+                        price: "price_1QSgKTGbz1lquIldSmdaTpME",
+                        quantity: 1
+                    },
+                ],
+                mode: "subscription",
+                successUrl: "https://www.google.com/",
+                cancelUrl: "https://www.stripe.com/"
+            }).then(function (result) {
+                alert(result.error ? result.error.message : "Redirection réussie !");
+            });
+        });
+    </script>
+</body>
+
+</html>
